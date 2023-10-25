@@ -1,0 +1,20 @@
+.alert{
+  width: 600px !important;
+}
+
+.submit{
+  width: 700px !important;
+}
+
+
+@media screen and (max-width: 475px) {
+  .alert{
+    width: 100% !important;
+  }
+  
+  .submit{
+    width: 100% !important;
+  }
+  
+  
+}
