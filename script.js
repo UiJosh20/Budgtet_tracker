@@ -7,8 +7,6 @@ function ref(){
   {
     display.style.display = "block";
     // display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>` 
-  }else{
-    addUp()
   }
 
 }
