@@ -12,21 +12,37 @@
   <nav class="w-100 bg-dark text-light p-2">
     <h5>Budget Tracker</h5>
   </nav>
+
+    <main class="container-fluid p-3 bg-dark">
+      <div class="row">
+
+      </div>
+
+    </main>
     <center>
-      <main class="container-fluid p-3">
+      <main class="container-fluid p-3 bg-dark">
         <div class="row">
           <div id="display"></div>
-          <div class="col-lg col-sm col-md w-100">
-            <input type="text" placeholder="Product name" id="productName" class="w-100 mt-2">
+
+          <div class="d-flex justify-content-center gap-5">
+            <div class="form__group field">
+              <input type="input" class="form__field" placeholder="Name" required="" id="productName">
+              <label for="name" class="form__label">Item name</label>
+            </div>
+  
+            <div class="form__group field">
+              <input type="input" class="form__field" placeholder="Name" required="" id="quantityOwn">
+              <label for="name" class="form__label">Quantity</label>
+            </div>
+  
+            <div class="form__group field">
+              <input type="input" class="form__field" placeholder="Name" required="" id="priceName">
+              <label for="name" class="form__label">Price</label>
+            </div>
           </div>
-          <div class="col-lg col-sm col-md">
-            <input type="number"  placeholder="Quantity" id="quantityOwn" class="w-100 mt-2">
-          </div>
-          <div class="col-lg col-sm col-md">
-            <input type="number" placeholder="Price" id="priceName" class="w-100 mt-2">
-          </div>
+  
           <center>
-            <button onclick="addUp()" class="w-100 mt-3 btn btn-primary fw-bold submit">submit</button>
+            <button onclick="addUp()" class="w-100 mt-5 btn btn-primary fw-bold submit">submit</button>
           </center>
         </div>
       </main>
