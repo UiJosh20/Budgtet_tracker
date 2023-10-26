@@ -1,7 +1,13 @@
-.bg-norm{
-  background-color: #e8e8e8;
-}
 
+
+nav{
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+}
+.mty{
+  margin-top: 100px !important;
+}
 .card1 {
   position: relative;
   width: 290px;
@@ -79,3 +85,33 @@
           transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
 }
 
+@media screen and (max-width: 475px) {
+  .alert{
+    width: 100% !important;
+    font-weight: bold !important;
+  }
+  nav{
+    padding: 0px !important;
+    display: flex;
+    padding: 10px 10px !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navigate{
+    width: 140px;
+    margin-left: 150px;
+    display: flex;
+    gap: 10px;
+    font-size: 12px !important;
+  }
+  .navigate>a>img{
+    width: 27px !important;
+  }
+  
+
+  .logotext{
+    font-size: 16px !important;
+  }
+  
+  
+}

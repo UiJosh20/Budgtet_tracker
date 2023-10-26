@@ -44,15 +44,14 @@ if(pName !== "" && quant !== "" && prices !== ""){
 
     if (budgetArray && budgetArray.length > 0) {
       let totalSpent = 0;
+      resultCard.innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100 position-fixed">Total Budget: $${totalSpent.toFixed(2)}</p>`;
       displayAll();
-      resultCard.innerHTML += `<p>Total Spent: $${totalSpent.toFixed(2)}</p>`;
     }
-  
-
-
+    
+    
+    
     function displayAll() {
       resultCard.innerHTML = ''; // Clear the card display before rendering
-    
       budgetArray.map((item, i) => {
         let itemCost = item.quant * item.prices;
         let totalSpent;

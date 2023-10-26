@@ -6,6 +6,9 @@
   width: 700px !important;
 }
 
+body,html{
+  overflow-y: hidden;
+}
 
 
 .form__group {
