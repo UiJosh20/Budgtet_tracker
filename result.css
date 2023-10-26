@@ -17,7 +17,7 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
-  padding:0px 20px 10px 20px;
+  padding:0px 20px 15px 20px;
   gap: 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -32,6 +32,7 @@
   margin: auto;
   width: 300px;
   height: 364px;
+  padding: 0px 10px;
   border-radius: 10px;
   background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
   z-index: -10;

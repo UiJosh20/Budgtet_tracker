@@ -12,7 +12,6 @@ const ref = () => {
 }
 setTimeout(()=>{
  display.style.display = "none"
- showErr.style.display = "none"
 
 },5000)
 
@@ -40,7 +39,7 @@ if(pName !== "" && quant !== "" && prices !== ""){
 
 
 
-
+// result page script
     
 
     if (budgetArray && budgetArray.length > 0) {
@@ -72,7 +71,6 @@ if(pName !== "" && quant !== "" && prices !== ""){
             <p>
               Total ${itemCost} 
             </p>
-            <p>budget tracker</p>
             <a href="#" class="btn btn-danger" onclick="deleteAny(${i})">Delete</a>
             <a href="#" class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-${i}">Edit</a>
           </div>
@@ -118,12 +116,25 @@ if(pName !== "" && quant !== "" && prices !== ""){
 
 
     function deleteAny(i) {
-      budgetArray.splice(i, 1);
-      localStorage.setItem("budget", JSON.stringify(budgetArray));
-      totalSpent = 0; // Reset totalSpent
-      resultCard.innerHTML = ""; // Clear the card display
-      displayAll(); // Redisplay the updated cards
+      let check = confirm("Are you sure you want to delete?")
+
+      if (check == true){
+        budgetArray.splice(i, 1);
+        localStorage.setItem("budget", JSON.stringify(budgetArray));
+        totalSpent = 0; // Reset totalSpent
+        resultCard.innerHTML = ""; // Clear the card display
+        displayAll(); // Redisplay the updated cards
+        errorx.innerHTML = `<p class="alert alert-success text-center">Deleted successfully</p>`
+        
+      }else{
+        errorx.innerHTML = `<p class="alert alert-danger text-center">Delete cancelled</p>`
+      }
     }
+
+    setTimeout(()=>{
+      errorx.style.display = "none"
+
+    }, 5000)
     
 
 
