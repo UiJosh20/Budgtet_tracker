@@ -1,3 +1,17 @@
+function ref(){
+  display.style.display = "none";
+  var pName = productName.value;
+  var quant = quantityOwn.value;
+  var prices = priceName.value;
+  if( pName == "" && quant == "" && prices == "")
+  {
+    display.style.display = "block";
+    // display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>` 
+  }else{
+    addUp()
+  }
+
+}
 
 function addUp(){
   var pName = productName.value;
@@ -11,11 +25,14 @@ if(pName !== "" && quant !== "" && prices !== ""){
     localStorage.setItem("budget", JSON.stringify(budgetArray))
     window.location.href = "result.html"
 
+
 }else{
-  display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>`
+  display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>`;
 }
-  
-  
+
+
 
 }
+
+
 

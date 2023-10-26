@@ -9,24 +9,28 @@
 </head>
 <body>
 
-  <nav class="w-100 bg-dark text-light p-2">
-    <h5>Budget Tracker</h5>
+  <nav class="w-100 bg-black text-light  d-flex justify-content-between px-5 py-3 align-items-center">
+    <h4>Budget Tracker</h4>
+    <div class="d-flex gap-5">
+    <a href="index.html" class="text-white text-decoration-none fw-bold d-flex flex-column align-items-center gap-2"><img src="images/icons8-home-48.png" alt="" width="35">Home</a>
+    <a href="result.html" class="text-white text-decoration-none fw-bold d-flex flex-column align-items-center gap-2"><img src="images/icons8-percentage-100.png" alt="" width="35">Budgets</a>
+    </div>
   </nav>
 
-    <main class="container-fluid p-3 bg-dark">
+    <main class="container-fluid p-3 bg-black">
       <div class="row">
 
       </div>
 
     </main>
     <center>
-      <main class="container-fluid p-3 bg-dark">
+      <main class="container-fluid p-3 bg-black">
         <div class="row">
           <div id="display"></div>
 
           <div class="d-flex justify-content-center gap-5">
             <div class="form__group field">
-              <input type="input" class="form__field" placeholder="Name" required="" id="productName">
+              <input type="input" class="form__field" placeholder="Name" required="" id="productName" oninput="ref()">
               <label for="name" class="form__label">Item name</label>
             </div>
   
