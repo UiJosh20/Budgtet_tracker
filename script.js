@@ -70,13 +70,34 @@ if(pName !== "" && quant !== "" && prices !== ""){
             <p>
               Total ${itemCost} 
             </p>
-            <a href="#" class="btn btn-danger" onclick="deleteAny(${i})">Delete</a>
-            <a href="#" class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-${i}">Edit</a>
+            <a href="#" class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-${i}">Delete</a>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal-${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog mt-5">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <h3 class="text-dark text-center">Are you sure you want to delete?</h3>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteAny(${i})" data-bs-dismiss="modal">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <a href="#" class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1-${i}">Edit</a>
           </div>
     
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal-${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+          <div class="modal fade" id="exampleModal1-${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog mt-5">
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
@@ -84,13 +105,13 @@ if(pName !== "" && quant !== "" && prices !== ""){
                 </div>
                 <div class="modal-body">
                   <div id="showErr"></div>
-                  <input type="text" placeholder="Product name" id="productName-${i}" class="form-control">
-                  <input type="number"  placeholder="Quantity" id="quantityOwn-${i}" class="form-control">
-                  <input type="number" placeholder="Price" id="priceName-${i}" class="form-control">
+                  <input type="text" placeholder="New name" id="productName-${i}" class="form-control mb-3">
+                  <input type="number"  placeholder="New quantity" id="quantityOwn-${i}" class="form-control mb-3">
+                  <input type="number" placeholder=" New price" id="priceName-${i}" class="form-control">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" onclick="editAny(${i})" data-bs-dismiss="modal">Save changes</button>
+                  <button type="button" class="btn btn-warning" onclick="editAny(${i})" data-bs-dismiss="modal">Edit</button>
                 </div>
               </div>
             </div>
@@ -115,9 +136,6 @@ if(pName !== "" && quant !== "" && prices !== ""){
 
 
     function deleteAny(i) {
-      let check = confirm("Are you sure you want to delete?")
-
-      if (check == true){
         budgetArray.splice(i, 1);
         localStorage.setItem("budget", JSON.stringify(budgetArray));
         totalSpent = 0; // Reset totalSpent
@@ -125,10 +143,8 @@ if(pName !== "" && quant !== "" && prices !== ""){
         displayAll(); // Redisplay the updated cards
         errorx.innerHTML = `<p class="alert alert-success text-center">Deleted successfully</p>`
         
-      }else{
-        errorx.innerHTML = `<p class="alert alert-danger text-center">Delete cancelled</p>`
       }
-    }
+    
 
     setTimeout(()=>{
       errorx.style.display = "none"
