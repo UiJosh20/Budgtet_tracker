@@ -11,9 +11,8 @@ const ref = () => {
   
 }
 setTimeout(()=>{
- display.style.display = "none"
-
-},5000)
+display.style.display = "none"
+},4000)
 
 let budgetArray = JSON.parse(localStorage.getItem("budget"))|| [];
 const addUp = () => {
@@ -40,17 +39,20 @@ if(pName !== "" && quant !== "" && prices !== ""){
 
 
 // result page script
-    
+  
+if (budgetArray == ""){
+  document.getElementById('resultCard').innerHTML = `<h2 class="fw-bold">No item added</h2>`
+}
 
-    if (budgetArray && budgetArray.length > 0) {
-      let totalSpent = 0;
-      resultCard.innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100 position-fixed">Total Budget: $${totalSpent.toFixed(2)}</p>`;
+  if (budgetArray && budgetArray.length > 0) {
       displayAll();
+      let totalSpent = 0;
+      document.getElementById('resultCard').innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100">Total Budget: $${totalSpent}</p>`;
     }
     
     
     
-    function displayAll() {
+    function displayAll(){
       resultCard.innerHTML = ''; // Clear the card display before rendering
       budgetArray.map((item, i) => {
         let itemCost = item.quant * item.prices;
@@ -70,7 +72,7 @@ if(pName !== "" && quant !== "" && prices !== ""){
             <p>
               Total ${itemCost} 
             </p>
-            <a href="#" class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-${i}">Delete</a>
+            <a href="#" class="btn btn-danger fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-${i}">Delete</a>
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModal-${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -92,7 +94,7 @@ if(pName !== "" && quant !== "" && prices !== ""){
             </div>
 
 
-            <a href="#" class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1-${i}">Edit</a>
+            <a href="#" class="btn btn-warning text-light fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1-${i}">Edit</a>
           </div>
     
           <!-- Modal -->
@@ -135,13 +137,16 @@ if(pName !== "" && quant !== "" && prices !== ""){
 
 
 
-    function deleteAny(i) {
-        budgetArray.splice(i, 1);
-        localStorage.setItem("budget", JSON.stringify(budgetArray));
-        totalSpent = 0; // Reset totalSpent
-        resultCard.innerHTML = ""; // Clear the card display
-        displayAll(); // Redisplay the updated cards
-        errorx.innerHTML = `<p class="alert alert-success text-center">Deleted successfully</p>`
+    const deleteAny = (i) => {
+      budgetArray.splice(i, 1);
+      localStorage.setItem("budget", JSON.stringify(budgetArray));
+      totalSpent = 0; // Reset totalSpent
+      resultCard.innerHTML = ""; // Clear the card display
+      errorx.innerHTML = `<p class="alert alert-success text-center">Deleted successfully</p>`
+      displayAll(); // Redisplay the updated cards
+      if (budgetArray == ""){
+        document.getElementById('resultCard').innerHTML = `<h2 class="fw-bold">No item added</h2>`
+      }
         
       }
     
@@ -149,7 +154,7 @@ if(pName !== "" && quant !== "" && prices !== ""){
     setTimeout(()=>{
       errorx.style.display = "none"
 
-    }, 5000)
+    }, 4000)
     
 
 
