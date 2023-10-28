@@ -117,6 +117,11 @@ nav{
   .logotext{
     font-size: 16px !important;
   }
-  
-  
+  #resulthorn{
+    display: flex;
+    justify-content: center;
+  }
+  #resultCard{
+    padding-bottom: 47px !important;
+  } 
 }
