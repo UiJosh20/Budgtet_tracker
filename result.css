@@ -1,5 +1,8 @@
 
-
+.pbottom{
+  position: fixed;
+  bottom: -15px !important;
+}
 
 nav{
   border-bottom: 2px solid rgba(185, 185, 185, 0.2);

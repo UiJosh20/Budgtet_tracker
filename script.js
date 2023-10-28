@@ -3,62 +3,41 @@ const ref = () => {
   let pName = productName.value;
   let quant = quantityOwn.value;
   let prices = priceName.value;
-  if( pName == "" && quant == "" && prices == "")
-  {
+  if (pName == "" && quant == "" && prices == "") {
     display.style.display = "block";
-    // display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>` 
+    // display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>`
   }
-  
-}
-setTimeout(()=>{
-display.style.display = "none"
-},4000)
+};
+setTimeout(() => {
+  display.style.display = "none";
+}, 4000);
 
-let budgetArray = JSON.parse(localStorage.getItem("budget"))|| [];
+let budgetArray = JSON.parse(localStorage.getItem("budget")) || [];
 const addUp = () => {
   let pName = productName.value;
   let quant = quantityOwn.value;
   let prices = priceName.value;
-  let budgetObj = {pName, quant, prices};
+  let budgetObj = { pName, quant, prices };
 
-
-if(pName !== "" && quant !== "" && prices !== ""){
-    display.innerHTML = ""
-    budgetArray.push(budgetObj)
-    localStorage.setItem("budget", JSON.stringify(budgetArray))
-    window.location.href = "result.html"
-
-
-}else{
-  display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>`;
-}
-
-}
-
-
-
+  if (pName !== "" && quant !== "" && prices !== "") {
+    display.innerHTML = "";
+    budgetArray.push(budgetObj);
+    localStorage.setItem("budget", JSON.stringify(budgetArray));
+    window.location.href = "result.html";
+  } else {
+    display.innerHTML = `<p class="alert alert-danger w-100 col-lg col-sm col-md">fill the input</p>`;
+  }
+};
 
 // result page script
-  
-if (budgetArray == ""){
-  document.getElementById('resultCard').innerHTML = `<h2 class="fw-bold">No item added</h2>`
-}
 
-  if (budgetArray && budgetArray.length > 0) {
-      displayAll();
-      let totalSpent = 0;
-      document.getElementById('resultCard').innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100">Total Budget: $${totalSpent}</p>`;
-    }
-    
-    
-    
-    function displayAll(){
-      resultCard.innerHTML = ''; // Clear the card display before rendering
-      budgetArray.map((item, i) => {
-        let itemCost = item.quant * item.prices;
-        let totalSpent;
-        totalSpent += itemCost;
-        resultCard.innerHTML += `
+let totalSpent = 0;
+function displayAll() {
+  resultCard.innerHTML = ""; // Clear the card display before rendering
+  budgetArray.map((item, i) => {
+    let itemCost = item.quant * item.prices;
+    totalSpent += itemCost;
+    resultCard.innerHTML += `
           <div class="card1">
             <p class="heading">
               ${item.pName}
@@ -99,7 +78,7 @@ if (budgetArray == ""){
     
           <!-- Modal -->
           <div class="modal fade" id="exampleModal1-${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog mt-5">
+          <div class="modal-dialog mt-5">
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
@@ -118,46 +97,43 @@ if (budgetArray == ""){
               </div>
             </div>
           </div>
-        </div>`;
-      });
-    }
-    
+          </div>`;
+  });
+}
 
+displayAll();
 
-    const editAny = (i) => {
-      budgetArray[i]["pName"] = document.getElementById(`productName-${i}`).value;
-      budgetArray[i]["quant"] = document.getElementById(`quantityOwn-${i}`).value;
-      budgetArray[i]["prices"] = document.getElementById(`priceName-${i}`).value;
-      localStorage.setItem("budget", JSON.stringify(budgetArray));
-      totalSpent = 0; // Reset totalSpent
-      resultCard.innerHTML = ""; // Clear the card display
-      displayAll()
+if (budgetArray.length > 0) {
+  document.getElementById("resulthorn").innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100 pbottom">Total Budget: &#8358;${totalSpent.toFixed(2)}</p>`;
+} else {
+  document.getElementById("resultCard").innerHTML += `<h2 class="fw-bold">No item added</h2>`;
+}
 
-    }
+const editAny = (i) => {
+  budgetArray[i]["pName"] = document.getElementById(`productName-${i}`).value;
+  budgetArray[i]["quant"] = document.getElementById(`quantityOwn-${i}`).value;
+  budgetArray[i]["prices"] = document.getElementById(`priceName-${i}`).value;
+  localStorage.setItem("budget", JSON.stringify(budgetArray));
+  totalSpent = 0; // Reset totalSpent
+  resultCard.innerHTML = ""; // Clear the card display
+  displayAll();
+};
 
+const deleteAny = (i) => {
+  budgetArray.splice(i, 1);
+  localStorage.setItem("budget", JSON.stringify(budgetArray));
+  totalSpent = 0; // Reset totalSpent
+  resultCard.innerHTML = ""; // Clear the card display
+  displayAll(); // Redisplay the updated cards
+  if (budgetArray.length > 0) {
+    document.getElementById("resulthorn").innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100 pbottom">Total Budget: &#8358;${totalSpent.toFixed(2)}</p>`;
+  } else {
+    resulthorn.innerHTML = ""
+    document.getElementById("resultCard").innerHTML += `<h2 class="fw-bold">No item added</h2>`;
+  }
+};
 
+// setTimeout(()=>{
+//   errorx.style.display = "none"
 
-    const deleteAny = (i) => {
-      budgetArray.splice(i, 1);
-      localStorage.setItem("budget", JSON.stringify(budgetArray));
-      totalSpent = 0; // Reset totalSpent
-      resultCard.innerHTML = ""; // Clear the card display
-      errorx.innerHTML = `<p class="alert alert-success text-center">Deleted successfully</p>`
-      displayAll(); // Redisplay the updated cards
-      if (budgetArray == ""){
-        document.getElementById('resultCard').innerHTML = `<h2 class="fw-bold">No item added</h2>`
-      }
-        
-      }
-    
-
-    // setTimeout(()=>{
-    //   errorx.style.display = "none"
-
-    // }, 4000)
-    
-
-
-   
-
-
+// }, 4000)
