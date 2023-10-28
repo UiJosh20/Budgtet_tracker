@@ -10,7 +10,8 @@ const ref = () => {
 };
 setTimeout(() => {
   display.style.display = "none";
-}, 4000);
+  
+}, 3500);
 
 let budgetArray = JSON.parse(localStorage.getItem("budget")) || [];
 const addUp = () => {
@@ -67,6 +68,7 @@ function displayAll() {
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger" onclick="deleteAny(${i})" data-bs-dismiss="modal">Delete</button>
+                    
                   </div>
                 </div>
               </div>
@@ -120,6 +122,7 @@ const editAny = (i) => {
 };
 
 const deleteAny = (i) => {
+  errorx.innerHTML = `<p class="alert alert-success known">Deleted successfully</p>`
   budgetArray.splice(i, 1);
   localStorage.setItem("budget", JSON.stringify(budgetArray));
   totalSpent = 0; // Reset totalSpent
@@ -131,9 +134,8 @@ const deleteAny = (i) => {
     resulthorn.innerHTML = ""
     document.getElementById("resultCard").innerHTML += `<h2 class="fw-bold">No item added</h2>`;
   }
+  setTimeout(()=>{
+    errorx.style.display = "none"
+  }, 2000)
 };
 
-// setTimeout(()=>{
-//   errorx.style.display = "none"
-
-// }, 4000)

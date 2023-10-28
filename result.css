@@ -3,7 +3,16 @@
   position: fixed;
   bottom: -15px !important;
 }
+.known{
+  margin-top: 100px !important;
+}
+#errorx{
+  padding-bottom:10px ;
+}
 
+#resultCard{
+  padding-bottom: 100px !important;
+}
 nav{
   border-bottom: 2px solid rgba(185, 185, 185, 0.2);
   position: fixed;
