@@ -108,7 +108,7 @@ displayAll();
 if (budgetArray.length > 0) {
   document.getElementById("resulthorn").innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100 pbottom">Total Budget: &#8358;${totalSpent.toFixed(2)}</p>`;
 } else {
-  document.getElementById("resultCard").innerHTML += `<h2 class="fw-bold">No item added</h2>`;
+  document.getElementById("resultCard").innerHTML += `<h2 class="fw-bold textColor">No item added</h2>`;
 }
 
 const editAny = (i) => {
@@ -119,6 +119,9 @@ const editAny = (i) => {
   totalSpent = 0; // Reset totalSpent
   resultCard.innerHTML = ""; // Clear the card display
   displayAll();
+  if (budgetArray.length > 0) {
+    document.getElementById("resulthorn").innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100 pbottom">Total Budget: &#8358;${totalSpent.toFixed(2)}</p>`;
+  }
 };
 
 const deleteAny = (i) => {
@@ -132,7 +135,7 @@ const deleteAny = (i) => {
     document.getElementById("resulthorn").innerHTML += `<p class="text-light fw-bold bg-success p-2 text-center w-100 pbottom">Total Budget: &#8358;${totalSpent.toFixed(2)}</p>`;
   } else {
     resulthorn.innerHTML = ""
-    document.getElementById("resultCard").innerHTML += `<h2 class="fw-bold">No item added</h2>`;
+    document.getElementById("resultCard").innerHTML += `<h2 class="fw-bold textColor">No item added</h2>`;
   }
   setTimeout(()=>{
     errorx.style.display = "none"
