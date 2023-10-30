@@ -194,7 +194,7 @@ body,html{
 
 /* tablet screen */
 
-@media screen and (min-width:745px) {
+@media screen and (max-width:745px) {
   .getall{
     display: flex;
     justify-content: center;
